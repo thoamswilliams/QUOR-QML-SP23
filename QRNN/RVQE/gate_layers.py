@@ -86,6 +86,7 @@ class rYLayer(GateLayer):
             return self._U
 
         # note: these matrices are TRANSPOSED! in this notation
+        
         θ = self.θ
         return torch.stack(
             [
