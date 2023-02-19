@@ -1,4 +1,4 @@
-# Natural Language Processing with Quantum Machine Learning
+# Sentiment Analysis with Quantum Machine Learning
 Authors: Owen Bardeen, Andris Huang, Thomas Lu, Nathan Song, Richard Wang
 
 Organization: Quantum Computing @ Berkeley
