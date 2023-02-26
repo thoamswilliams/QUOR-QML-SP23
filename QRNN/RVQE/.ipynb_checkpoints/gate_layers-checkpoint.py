@@ -90,7 +90,9 @@ class rYLayer(GateLayer):
             return self._U
 
         # note: these matrices are TRANSPOSED! in this notation
-        θ = self.θ
+        θ = self.θ.detach()
+        #θ = self.θ
+        #θ = tensor(3.14)
         return torch.stack(
             [
                 torch.stack([torch.cos(0.5 * θ), torch.sin(-0.5 * θ)]),
