@@ -535,7 +535,7 @@ if __name__ == "__main__":
 
     title = " RVQE Trainer "
     print(
-        colorful.background("▄" * len(title))
+        colorful.background("▄  " * len(title))
         + "\n"
         + colorful.bold_white_on_background(title)
         + "\n"
