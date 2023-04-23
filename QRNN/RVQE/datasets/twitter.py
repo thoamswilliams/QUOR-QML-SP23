@@ -6,8 +6,8 @@ import string
 class TwitterSentiment(DataFactory):
     _data = None
     _targets = None
-    VALID_CHARACTERS = "abcdefghijklmnopqrstuvwxyz,.?! \n"
-    DISPLAY_CHARACTERS = "abcdefghijklmnopqrstuvwxyz,.?! ¶"
+    VALID_CHARACTERS = "abcdefghijklmnopqrstuvwxyz? \n012"
+    DISPLAY_CHARACTERS = "abcdefghijklmnopqrstuvwxyz? ¶012"
     assert len(VALID_CHARACTERS) <= 32, "characters should fit into 5 bits"
 
     @staticmethod
@@ -26,7 +26,7 @@ class TwitterSentiment(DataFactory):
 
         for i in labels:
             for j in range(240):
-                TwitterSentiment._targets.append(i)
+                TwitterSentiment._targets.append(char_to_bitword(i, TwitterSentiment.VALID_CHARACTERS, 5))
 
         def onlyascii(char):
             if not char in string.printable:
