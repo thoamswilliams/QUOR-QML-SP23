@@ -282,15 +282,15 @@ def train(shard: int, args):
 
         if RESUME_MODE:
             print(
-                f"🔄  Resuming session! Model has {count_parameters(rvqe)} parameters, and we start at epoch {epoch_start} with best validation loss {best_validation_loss:7.3e}."
+                f">  Resuming session! Model has {count_parameters(rvqe)} parameters, and we start at epoch {epoch_start} with best validation loss {best_validation_loss:7.3e}."
             )
         else:
-            print(f"⏩  New session! Model has {count_parameters(rvqe)} parameters.")
+            print(f">  New session! Model has {count_parameters(rvqe)} parameters.")
 
         for epoch in range(epoch_start, args.epochs):
             # check if we should timeout
             if environment.is_timeout:
-                print(f"❎  Timeout hit after {args.timeout}s.")
+                print(f">  Timeout hit after {args.timeout}s.")
                 break
 
             time_start = timer()
@@ -393,13 +393,13 @@ def train(shard: int, args):
                         for i in torch.randperm(len(sentences))[: args.num_validation_samples]:
                             if (targets[i] != sentences[i]).any():
                                 text = f"inpt = { dataset.to_human(sentences[i]) }"
-                                print(colorful.faint(text))
+                                # print(text)
                                 logtext += "    " + text + "\r\n"
                             text = f"gold = { dataset.to_human(targets[i]) }"
-                            print(colorful.gold(text))
+                            # print(colorful.gold(text))
                             logtext += "    " + colorless(text) + "\r\n"
                             text = f"pred = { dataset.to_human(measured_sequences[i], offset=1) }"
-                            print(text)
+                            # print(text)
                             logtext += "    " + colorless(text) + "\r\n"
 
                         # character error rate
@@ -505,7 +505,7 @@ def train(shard: int, args):
                 "hparams/character_error_rate_best": best_character_error_rate,
             },
         )
-        print(f"🆗  DONE. Written final checkpoint to {checkpoint}")
+        print(f">  DONE. Written final checkpoint to {checkpoint}")
 
 
 def command_train(args):
@@ -535,11 +535,11 @@ if __name__ == "__main__":
 
     title = " RVQE Trainer "
     print(
-        colorful.background("▄" * len(title))
+        colorful.background("-" * len(title))
         + "\n"
         + colorful.bold_white_on_background(title)
         + "\n"
-        + colorful.background("▀" * len(title))
+        + colorful.background("_" * len(title))
     )
 
     import argparse
