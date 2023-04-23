@@ -5,6 +5,7 @@ from .mnist import *
 from .mnistpca import *
 from .mnistumap import *
 from .dna import *
+from .twitter import TwitterSentiment
 
 all_datasets = {
     "simple-seq": DataSimpleSequences,
@@ -48,4 +49,5 @@ all_datasets = {
     "mnist01-gen": DataMNIST01_Gen,
     "shakespeare": DataShakespeare,
     "dna": DataDNA,
+    "twitter": TwitterSentiment,
 }
