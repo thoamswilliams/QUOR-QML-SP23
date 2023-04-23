@@ -76,6 +76,8 @@ class TwitterSentiment(DataFactory):
                 TwitterSentiment._data.append(
                     char_to_bitword(c, TwitterSentiment.VALID_CHARACTERS, 5)
                 )
+        print(len(TwitterSentiment._targets))
+        print(len(TwitterSentiment._data))
 
     def __init__(self, shard: int, **kwargs):
         super().__init__(shard, **kwargs)
@@ -102,6 +104,8 @@ class TwitterSentiment(DataFactory):
             ).item()
             sentences.append(self._data[idx_start * self.sentence_length : (idx_start + 1) * self.sentence_length])
             targets.append(self._targets[idx_start * self.sentence_length : (idx_start + 1) * self.sentence_length])
+        print(len(sentences))
+        print(len(targets))
 
         # turn into batch
         return self._sentences_to_batch(sentences, targets=targets)
