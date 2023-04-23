@@ -27,7 +27,7 @@ class TwitterSentiment(DataFactory):
         for i in labels:
             for j in range(240):
                 TwitterSentiment._targets.append(i)
-                
+
         def onlyascii(char):
             if not char in string.printable:
                 return ""
@@ -101,7 +101,7 @@ class TwitterSentiment(DataFactory):
                 0, int(len(self._data) / self.sentence_length), (1,), generator=self.rng
             ).item()
             sentences.append(self._data[idx_start * self.sentence_length : (idx_start + 1) * self.sentence_length])
-            targets.append(self._targets[idx_start])
+            targets.append(self._targets[idx_start * self.sentence_length : (idx_start + 1) * self.sentence_length])
 
         # turn into batch
         return self._sentences_to_batch(sentences, targets=targets)
