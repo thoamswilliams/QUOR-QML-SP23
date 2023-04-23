@@ -22,9 +22,12 @@ class TwitterSentiment(DataFactory):
         input_text = df["text"].tolist()
         labels = df["label"].tolist()
 
-        TwitterSentiment._targets = labels
+        TwitterSentiment._targets = []
 
-        def onlyascii(char):
+        for i in labels:
+	    for j in range(240):
+		TwitterSentiment._targets.append(i)
+	def onlyascii(char):
             if not char in string.printable:
                 return ""
             else:
@@ -61,7 +64,7 @@ class TwitterSentiment(DataFactory):
             ]:
                 line = line.replace(c, r)
 
-            for i in range(len(240)):
+            for i in range(240):
                 if i < len(line):
                     c = line[i]
                 else:
