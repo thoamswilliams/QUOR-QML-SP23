@@ -25,9 +25,10 @@ class TwitterSentiment(DataFactory):
         TwitterSentiment._targets = []
 
         for i in labels:
-	    for j in range(240):
-		TwitterSentiment._targets.append(i)
-	def onlyascii(char):
+            for j in range(240):
+                TwitterSentiment._targets.append(i)
+                
+        def onlyascii(char):
             if not char in string.printable:
                 return ""
             else:
