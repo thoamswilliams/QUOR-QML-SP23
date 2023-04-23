@@ -7,7 +7,7 @@ class TwitterSentiment(DataFactory):
     _data = None
     _targets = None
     VALID_CHARACTERS = "abcdefghijklmnopqrstuvwxyz? \n012"
-    DISPLAY_CHARACTERS = "abcdefghijklmnopqrstuvwxyz? ¶012"
+    DISPLAY_CHARACTERS = "abcdefghijklmnopqrstuvwxyz? P012"
     assert len(VALID_CHARACTERS) <= 32, "characters should fit into 5 bits"
 
     @staticmethod
