@@ -55,7 +55,7 @@ For instance, to train the umap augmented MNIST dataset on an 8-core machine, ex
 
     OMP_NUM_THREADS=2 ./main.py \
         --tag experiment-test \
-        --seed 42 \
+        --seed 42 \conda
         --port 20023 \
         --num-shards 4 \
         --epochs 10000 \

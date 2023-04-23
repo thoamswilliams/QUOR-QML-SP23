@@ -74,14 +74,18 @@ class rYLayer(GateLayer):
 
         self.lanes = [target_lane]
         self.θ = initial_θ
+        #self.U = tensor([[1.0, 1.0], [1.0, -1.0]]) / math.sqrt(2.0)
 
+        
         if isinstance(self.θ, float):
             # assume this is a constant rotation gate, so create cache value
-            self.θ = tensor(self.θ)
+            self.θ = nn.Parameter(tensor(self.θ), requires_grad=False)
             self._U = self.U
+        
 
     @property
     def U(self) -> Operator:
+        #self = self.clone()
         if hasattr(self, "_U"):
             return self._U
 
@@ -89,8 +93,10 @@ class rYLayer(GateLayer):
         θ = self.θ
         return torch.stack(
             [
-                torch.stack([(0.5 * θ).cos(), (-0.5 * θ).sin()]),
-                torch.stack([(0.5 * θ).sin(), (0.5 * θ).cos()]),
+                torch.stack([torch.cos(0.5 * θ), torch.sin(-0.5 * θ)]),
+                torch.stack([torch.sin(0.5 * θ), torch.cos(0.5 * θ)]),
+                #torch.stack([0, -1]),
+                #torch.stack([1, 0])
             ]
         )
 
