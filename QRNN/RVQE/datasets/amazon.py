@@ -31,7 +31,7 @@ class AmazonSentiment(DataFactory):
             elif (i == "[0, 1]"):
                 char = 0
             for j in range(80):
-                AmazonSentiment._train_targets.append(char_to_bitword(char, AmazonSentiment.VALID_CHARACTERS, 5))
+                AmazonSentiment._train_targets.append(char_to_bitword(str(char), AmazonSentiment.VALID_CHARACTERS, 5))
 
         def onlyascii(char):
             if not char in string.printable:
