@@ -26,7 +26,7 @@ class TwitterSentimentReduced(DataFactory):
 
         for i in labels:
             for j in range(180):
-                TwitterSentimentReduced._targets.append(char_to_bitword(i, TwitterSentimentReduced.VALID_CHARACTERS, 5))
+                TwitterSentimentReduced._targets.append(char_to_bitword(str(i), TwitterSentimentReduced.VALID_CHARACTERS, 5))
 
         def onlyascii(char):
             if not char in string.printable:

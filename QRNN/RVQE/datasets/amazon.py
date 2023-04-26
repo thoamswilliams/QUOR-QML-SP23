@@ -155,7 +155,7 @@ class AmazonSentiment(DataFactory):
         super().__init__(shard, **kwargs)
         self.sentence_length = 80
 
-        if self._data == None:
+        if self._train_data == None:
             self._load_shakespeare()
 
     @property
