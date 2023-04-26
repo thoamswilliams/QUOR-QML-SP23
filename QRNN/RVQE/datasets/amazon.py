@@ -86,9 +86,9 @@ class AmazonSentiment(DataFactory):
 
         AmazonSentiment._test_data = []
 
-        df = pd.read_csv(DATASET_PATH_TEST, delimiter = ';')
-        input_text = df["text"].tolist()
-        labels = df["label"].tolist()
+        df = pd.read_csv(DATASET_PATH_TRAIN, delimiter = ',')
+        input_text = df["sentences"].tolist()
+        labels = df["labels"].tolist()
 
         AmazonSentiment._test_targets = []
 
