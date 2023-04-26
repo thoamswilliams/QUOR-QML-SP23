@@ -6,6 +6,8 @@ from .mnistpca import *
 from .mnistumap import *
 from .dna import *
 from .twitter import TwitterSentiment
+from .amazon import AmazonSentiment
+from .twitter_reduced import TwitterSentimentReduced
 
 all_datasets = {
     "simple-seq": DataSimpleSequences,
@@ -50,4 +52,6 @@ all_datasets = {
     "shakespeare": DataShakespeare,
     "dna": DataDNA,
     "twitter": TwitterSentiment,
+    "twitter-short": TwitterSentimentReduced,
+    "amazon": AmazonSentiment,
 }
