@@ -302,9 +302,8 @@ def train(shard: int, args):
             def loss_closure():
                 nonlocal loss  # write to loss outside closure
                 nonlocal min_postsel_prob
-                nonlocal measured_sequences
                 optimizer.zero_grad()
-                probs, measured_sequences, min_postsel_prob = rvqe(sentences, targets, postselect_measurement=True)
+                probs, _, min_postsel_prob = rvqe(sentences, targets, postselect_measurement=True)
                 _probs = dataset.filter(
                     probs, dim_sequence=2, targets_hint=data.skip_first(targets), dim_targets=1
                 )
@@ -331,6 +330,9 @@ def train(shard: int, args):
 
             optimizer.step(loss_closure)
 
+            measured_probs, measured_sequences, min_postsel_prob = rvqe(
+                        sentences, targets, postselect_measurement=dataset.ignore_output_at_step
+                    )
             train_character_error_rate = data.character_error_rate(
                 dataset.filter(
                     measured_sequences,
